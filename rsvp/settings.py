@@ -19,7 +19,7 @@ INSTALLED_APPS = [
 
     # rsvp apps
     'rsvp',
-    # 'rsvp.admin',
+    'rsvp.admin',
 
     # third party apps
     'django_jinja',
@@ -84,4 +84,5 @@ USE_L10N = True
 
 USE_TZ = True
 
+STATIC_ROOT = join(BASE_DIR, 'static')
 STATIC_URL = '/static/'

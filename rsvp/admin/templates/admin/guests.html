@@ -1,0 +1,28 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}RSVP Admin{% endblock title %}
+
+{% block contents %}
+    <table class="table table-bordered table-striped">
+        <thead>
+            <tr>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for guest in guests %}
+                <tr>
+                    <td>{{ guest }}</td>
+                </tr>
+            {% else %}
+                <tr class="success">
+                    <td colspan="3" class="text-center">
+                        <p><strong>You have not created any guests yet!</strong></p>
+                        <a href="" class="btn btn-success">Create One!</a>
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock contents %}

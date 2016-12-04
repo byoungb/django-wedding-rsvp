@@ -1,4 +1,6 @@
 Django==1.10.4
+django-choice-object==0.9
 django-jinja==2.2.1
 Jinja2==2.8
 MarkupSafe==0.23
+six==1.10.0

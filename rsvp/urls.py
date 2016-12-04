@@ -8,11 +8,11 @@ urlpatterns = [
         view=IndexView.as_view(),
         name='index',
     ),
-    # url(
-    #     regex=r'^admin/',
-    #     view=include(
-    #         arg='rsvp.admin.urls',
-    #         namespace='admin',
-    #     ),
-    # ),
+    url(
+        regex=r'^admin/',
+        view=include(
+            arg='rsvp.admin.urls',
+            namespace='admin',
+        ),
+    ),
 ]
