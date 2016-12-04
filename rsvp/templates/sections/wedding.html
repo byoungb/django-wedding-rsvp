@@ -1,0 +1,56 @@
+<section id="wedding" class="wedding-section section">
+    <div class="container text-center">
+        <h3 class="title script">
+            <span class="title-deco-left"></span>
+            <span class="title-text">The Wedding</span>
+            <span class="title-deco-right"></span>
+        </h3>
+        <div id="countdown_box" class="countdown-box"></div>
+        <div class="row cols-wrapper">
+            <div class="ceremony-col col-xs-12 col-sm-6">
+                <div class="col-inner">
+                    <h4 class="subtitle">Ceremony</h4>
+                    <p class="intro">We are getting married at Immaculate Conception Church.</p>
+                    <ul class="meta-list list-unstyled text-left center-block">
+                        <li>
+                            <span class="icon-calendar love-icon"></span>
+                            <span>{{ CEREMONY_DATETIME|date('l - F jS, Y') }}</span>
+                        </li>
+                        <li>
+                            <span class="icon-clock love-icon"></span>
+                            <span>{{ CEREMONY_DATETIME|date('g:i a') }} - {{ (CEREMONY_DATETIME + CEREMONY_DURATION)|date('g:i a') }}</span>
+                        </li>
+                        <li>
+                            <span class="icon-map love-icon"></span>
+                            <span>Immaculate Conception Church</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="reception-col col-xs-12 col-sm-6">
+                <div class="col-inner">
+                    <h4 class="subtitle">Reception</h4>
+                    <p class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                    <ul class="meta-list list-unstyled text-left center-block">
+                        <li>
+                            <span class="icon-calendar love-icon"></span>
+                            <span>{{ RECEPTION_DATETIME|date('l - F jS, Y') }}</span>
+                        </li>
+                        <li>
+                            <span class="icon-clock love-icon"></span>
+                            <span>{{ RECEPTION_DATETIME|date('g:i a') }} - {{ (RECEPTION_DATETIME + RECEPTION_DURATION)|date('g:i a') }}</span>
+                        </li>
+                        <li>
+                            <span class="icon-map love-icon"></span>
+                            <span>Wapsie Valley High School</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="action-wrapper">
+            <a class="btn btn-primary" href="#" data-toggle="modal" data-target="#rsvp-modal">RSVP Now</a>
+        </div>
+    </div>
+    <div id="map" class="map-container"></div>
+</section>
