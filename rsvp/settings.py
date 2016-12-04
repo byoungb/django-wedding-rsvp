@@ -19,7 +19,7 @@ INSTALLED_APPS = [
 
     # rsvp apps
     'rsvp',
-    'rsvp.admin',
+    # 'rsvp.admin',
 
     # third party apps
     'django_jinja',
