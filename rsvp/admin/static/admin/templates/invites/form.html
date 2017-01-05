@@ -1,0 +1,19 @@
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">{% if invite.isNew() %}Create Invite{% else %}Edit Invite{% endif %}</h4>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label for="id_name">Name on Invite</label>
+                <input type="text" class="form-control" id="id_name" name="name" value="{{ invite.get('name') }}" />
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+            <input type="submit" class="btn btn-primary" value="{% if invite.isNew() %}Create Invite{% else %}Edit Invite{% endif %}" />
+        </div>
+    </div>
+</div>

@@ -118,7 +118,18 @@ a.btn-primary:focus,
     -moz-box-shadow: none;
     box-shadow: none;
     height: 45px;
-    border-color: #eee;
+    border-color: #d3d3d3;
+}
+
+#search_form .list-group-item,
+#search_form .form-control {
+    text-align: center;
+}
+
+.code-group .form-control {
+    text-transform: uppercase;
+    margin: 0 auto;
+    width: 150px;
 }
 
 .form-control::-webkit-input-placeholder {
@@ -610,7 +621,7 @@ label {
     -webkit-box-sizing: content-box;
     -moz-box-sizing: content-box;
     box-sizing: content-box;
-    padding: 5px;
+    /*padding: 5px;*/
     border: 1px solid #eeeeee;
     font-family: arial sans-serif;
 }
@@ -939,7 +950,7 @@ label {
 
 .modal .modal-title {
     font-weight: bold;
-    font-size: 28px;
+    /*font-size: 28px;*/
     padding-top: 26px;
 }
 

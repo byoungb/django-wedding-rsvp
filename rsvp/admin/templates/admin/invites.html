@@ -1,0 +1,35 @@
+{% extends 'admin/base.html' %}
+
+{% block title %}RSVP Admin{% endblock title %}
+
+{% block contents %}
+    <div id="invites">
+        <table class="table table-bordered table-striped">
+            <thead>
+            <tr>
+                <th colspan="5" class="text-right">
+                    <span class="btn btn-xs btn-default invite-add">Add Invite</span>
+                </th>
+            </tr>
+            <tr>
+                <th>QR Code</th>
+                <th>Name</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+{% endblock contents %}
+
+{% block js %}
+    {{ super() }}
+    <script src="{{ static('admin/js/invites.js') }}" type="text/javascript"></script>
+{% endblock js %}
+
+{% block inline_js %}
+    <script type="text/javascript">
+        $(function () {
+            $('#invites').invites();
+        });
+    </script>
+{% endblock inline_js %}

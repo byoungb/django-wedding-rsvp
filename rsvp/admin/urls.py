@@ -1,6 +1,6 @@
 from django.conf.urls import url
 
-from rsvp.admin.views import IndexView, GuestsView
+from rsvp.admin.views import IndexView, InviteView
 
 urlpatterns = [
     url(
@@ -9,8 +9,8 @@ urlpatterns = [
         name='index',
     ),
     url(
-        regex=r'^guests/$',
-        view=GuestsView.as_view(),
-        name='guests',
+        regex=r'^invites/$',
+        view=InviteView.as_view(),
+        name='invites',
     ),
 ]

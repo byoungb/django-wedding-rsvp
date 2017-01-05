@@ -1,10 +1,10 @@
 from os.path import dirname, abspath, join
 
-BASE_DIR = dirname(dirname(abspath(__file__)))
+BASE_DIR = dirname(dirname(dirname(abspath(__file__))))
 
 SECRET_KEY = '1b64s08(we+s_i_)3oq0iuc89zz*hm!1^#bnxf2h$bhtljlpt!'
 
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = [
     '*',
@@ -32,6 +32,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'rsvp.middleware.RsvpMiddleware',
 ]
 
 ROOT_URLCONF = 'rsvp.urls'
