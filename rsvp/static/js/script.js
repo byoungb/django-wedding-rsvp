@@ -2,34 +2,34 @@ $(document).ready(function () {
     var map = new GMaps({
         div: '#map',
         scrollwheel: false,
-        lat: 42.757755,
-        lng: -92.102278,
-        zoom: 10
+        lat: 42.468112,
+        lng: -91.994214,
+        zoom: 12
     });
     map.addMarker({
-        lat: 42.681078,
-        lng: -92.138698,
+        lat: 42.448675,
+        lng: -91.923585,
         title: 'Reception Location',
         infoWindow: {
             content: '<div class="note">Reception</div>' +
-            '<h4 class="map-title script">Wapsie Valley High School</h4>' +
+            '<h4 class="map-title script">Heartland Acres</h4>' +
             '<div class="address">' +
-                '<span>Leah you better not be having</span><br />' +
-                '<span>your reception here</span>' +
+                '<span>2600 Swan Lake Blvd</span><br />' +
+                '<span>Independence IA 50644</span>' +
             '</div>'
         }
     });
     map.addMarker({
-        lat: 42.847755,
-        lng: -92.102278,
+        lat: 42.473451,
+        lng: -92.062260,
         verticalAlign: 'top',
         title: 'Ceremony Location',
         infoWindow: {
             content: '<div class="note">Ceremony</div>' +
-            '<h4 class="map-title script">Immaculate Conception Church</h4>' +
+            '<h4 class="map-title script">St Athanasius</h4>' +
             '<div class="address">' +
-                '<span>413 W. 1st Street</span><br />' +
-                '<span>Sumner, IA 50674</span>' +
+                '<span>711 Stevens Street</span><br />' +
+                '<span>Jesup IA 50648</span>' +
             '</div>'
         }
     });

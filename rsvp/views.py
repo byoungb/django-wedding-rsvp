@@ -19,11 +19,11 @@ class IndexView(TemplateResponseMixin, View):
     def get(self, request, *args, **kwargs):
         return self.render_to_response({
             'GOOGLE_MAPS_API_KEY': 'AIzaSyCYhdc-qA-ut3oH4YNfVFKHHgnvIo6eM0U',
-            'CEREMONY_DATETIME': make_aware(datetime(2017, 7, 1, 14)),
+            'CEREMONY_DATETIME': make_aware(datetime(2017, 5, 13, 14)),
             'CEREMONY_DURATION': timedelta(hours=2),
-            'RECEPTION_DATETIME': make_aware(datetime(2017, 7, 1, 18)),
+            'RECEPTION_DATETIME': make_aware(datetime(2017, 5, 13, 18)),
             'RECEPTION_DURATION': timedelta(hours=4),
-            'RSVP_DEADLINE': date(2017, 6, 1),
+            'RSVP_DEADLINE': date(2017, 4, 1),
             'NAMES': ('Leah', 'Adam'),
             'suggest_form': SuggestForm(
                 auto_id=None,
