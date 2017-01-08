@@ -34,3 +34,16 @@ class InviteView(TemplateResponseMixin, JsonResponseMixin, View):
             raise Exception(form.errors)
         invite = form.save()
         return self.json_to_response(invite)
+
+    def put(self, request, invite_id, *args, **kwargs):
+        instance = Invite.objects.get(
+            id=invite_id,
+        )
+        form = InviteForm(
+            data=loads(request.body),
+            instance=instance,
+        )
+        if not form.is_valid():
+            raise Exception(form.errors)
+        invite = form.save()
+        return self.json_to_response(invite)

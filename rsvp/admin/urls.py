@@ -9,7 +9,7 @@ urlpatterns = [
         name='index',
     ),
     url(
-        regex=r'^invites/$',
+        regex=r'^invites(?:/(?P<invite_id>\d+))?/$',
         view=InviteView.as_view(),
         name='invites',
     ),

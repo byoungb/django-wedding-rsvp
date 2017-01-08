@@ -7,6 +7,10 @@
     var InviteModel = Backbone.Model.extend({
         defaults: {
             // name: 'Benny'
+        },
+        url: function() {
+            var origUrl = Backbone.Model.prototype.url.call(this);
+            return origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
         }
     });
 

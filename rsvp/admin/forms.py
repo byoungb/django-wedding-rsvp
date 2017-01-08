@@ -7,6 +7,5 @@ class InviteForm(forms.ModelForm):
     class Meta:
         model = Invite
         fields = [
-            # 'max_guests',
             'name',
         ]
