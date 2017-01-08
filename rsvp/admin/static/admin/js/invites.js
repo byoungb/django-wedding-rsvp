@@ -38,6 +38,7 @@
 
     var InvitesView = Backbone.View.extend({
         events: {
+            'click span.invite-edit': 'edit',
             'click span.invite-add': 'add'
         },
         initialize: function () {
@@ -55,10 +56,18 @@
             }, this);
             this.$('table tbody').html(fragment);
         },
+        edit: function (event) {
+            var invite_id = this.$(event.currentTarget).data('id'),
+                model = this.collection.get(invite_id);
+            this.load(model);
+        },
         add: function () {
             var model = new InviteModel(null, {
                 collection: this.collection
             });
+            this.load(model);
+        },
+        load: function (model) {
             var modal = new InviteFormView({
                 model: model
             });
