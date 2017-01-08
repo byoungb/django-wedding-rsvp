@@ -31,6 +31,8 @@
             event.preventDefault();
             var data = this.$el.serializeObject();
             this.model.save(data);
+            this.$el.modal('hide');
+            this.model.collection.add(this.model);
         }
     });
 
@@ -54,10 +56,11 @@
             this.$('table tbody').html(fragment);
         },
         add: function () {
+            var model = new InviteModel(null, {
+                collection: this.collection
+            });
             var modal = new InviteFormView({
-                model: new InviteModel({
-                    collection: this.collection
-                })
+                model: model
             });
             this.$el.append(modal.el);
             modal.$el.modal();

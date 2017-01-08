@@ -1,3 +1,5 @@
+from __future__ import unicode_literals
+
 from django.utils.http import urlencode
 from django.urls.base import reverse
 from django.db import models
@@ -48,11 +50,10 @@ class Invite(models.Model):
             }),
         )
 
-    def qr_code(self, request):
+    def qr_code(self):
+        # TODO: Use domain from site
         return QRCode(
-            url=request.build_absolute_uri(
-                location=self.get_absolute_url(),
-            ),
+            url='https://local.rsvp.com{}'.format(self.get_absolute_url()),
         )
 
 
@@ -86,4 +87,5 @@ class Guest(models.Model):
     meal = models.ForeignKey(
         related_name='guests',
         to='rsvp.Meal',
+        null=True,
     )

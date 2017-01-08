@@ -1,7 +1,8 @@
 <tr>
-    <td>
-{#        <img src="data:image/svg+xml;base64,{{ invite.qr_code(request) }}" style="width:100px;" />#}
-    </td>
+{#    <td>#}
+{#        <img src="data:image/svg+xml;base64,{{ invite.get('qr_code') }}" style="width:100px;" />#}
+{#    </td>#}
+    <td>{{ invite.get('key') }}</td>
     <td>
         <a href="{{ invite.get('url') }}">{{ invite.get('name') }}</a>
     </td>
