@@ -4,9 +4,9 @@ from django.utils.http import urlencode
 from django.urls.base import reverse
 from django.db import models
 
+from rsvp import STATUSES, HASH, GUEST_TYPES
 from rsvp.managers import InviteQuerySet
 from rsvp.util.qrcode import QRCode
-from rsvp import STATUSES, HASH
 
 
 class Invite(models.Model):
@@ -67,15 +67,6 @@ class View(models.Model):
     )
 
 
-class Meal(models.Model):
-    name = models.CharField(
-        max_length=32,
-    )
-    description = models.TextField(
-        null=True,
-    )
-
-
 class Guest(models.Model):
     name = models.CharField(
         max_length=128,
@@ -84,8 +75,8 @@ class Guest(models.Model):
         related_name='guests',
         to='rsvp.Invite',
     )
-    meal = models.ForeignKey(
-        related_name='guests',
-        to='rsvp.Meal',
-        null=True,
+    type = models.CharField(
+        default=GUEST_TYPES.ADULT,
+        choices=GUEST_TYPES,
+        max_length=16,
     )

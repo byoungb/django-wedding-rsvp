@@ -1,12 +1,27 @@
 (function (globals, $) {
 
-    nunjucks.configure('/static/admin/templates', {
-        autoescape: true
+    var env = nunjucks.configure('/static/admin/templates', {
+        autoescape: false
+    });
+
+    var guest_form = env.getTemplate('invites/guest.html');
+
+    env.addFilter('guest_form', function (guest) {
+        return guest_form.render({
+            guest: guest
+        });
+    });
+
+    var GuestModel = Backbone.Model.extend({});
+
+    var GuestCollection = Backbone.Collection.extend({
+        model: GuestModel
     });
 
     var InviteModel = Backbone.Model.extend({
-        defaults: {
-            // name: 'Benny'
+        parse: function (response) {
+            response.guests = new GuestCollection(response.guests);
+            return response;
         },
         url: function() {
             var origUrl = Backbone.Model.prototype.url.call(this);
@@ -22,19 +37,57 @@
     var InviteFormView = Backbone.View.extend({
         tagName: 'form',
         className: 'modal fade',
+        attributes: {
+            'onkeypress': 'return event.keyCode != 13;',
+            'autocomplete': 'off'
+        },
         events: {
+            'click span.remove-guest': 'remove_guest',
+            'click span.add-guest': 'add_guest',
             'hidden.bs.modal': 'remove',
             'submit': 'submit'
         },
+        template: env.getTemplate('invites/form.html'),
         initialize: function () {
-            this.$el.html(nunjucks.render('invites/form.html', {
+            var html = this.template.render({
                 invite: this.model
-            }));
+            });
+            this.$el.html(html);
+        },
+        add_guest: function (event) {
+            var html = nunjucks.renderString('{{ guest|guest_form }}', {
+                guest: new GuestModel()
+            });
+            this.$('ul.guests-list').append(html);
+        },
+        remove_guest: function (event) {
+            var guest_id = this.$(event.currentTarget).data('id');
+            this.$('#guest_' + guest_id).remove();
+            console.log(this.model.get('guests').remove(guest_id));
         },
         submit: function (event) {
             event.preventDefault();
             var data = this.$el.serializeObject();
-            this.model.save(data);
+            _.each(data, function (value, key) {
+                if (key.match('^id_')) {
+                    var guest_data = {
+                        name: data['name_' + value],
+                        type: data['type_' + value]
+                    };
+                    if (value.match('^c')) {
+                        console.log('create')
+                        var guest = new GuestModel(guest_data);
+                        this.model.get('guests').add(guest);
+                    } else {
+                        console.log('update')
+                        this.model.get('guests').get(value).set(guest_data);
+                    }
+                }
+            }, this);
+            this.model.set({
+                name: data.name
+            });
+            this.model.save();
             this.$el.modal('hide');
             this.model.collection.add(this.model);
         }
@@ -45,6 +98,7 @@
             'click span.invite-edit': 'edit',
             'click span.invite-add': 'add'
         },
+        template: env.getTemplate('invites/row.html'),
         initialize: function () {
             this.listenTo(this.collection, 'sync', this.render);
             this.collection.fetch();
@@ -53,7 +107,7 @@
             this.$('table tbody').empty();
             var fragment = document.createDocumentFragment();
             this.collection.each(function (model) {
-                var html = nunjucks.render('invites/row.html', {
+                var html = this.template.render({
                     invite: model
                 });
                 fragment.appendChild($(html).get(0));

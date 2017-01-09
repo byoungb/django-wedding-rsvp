@@ -1,0 +1,18 @@
+{% set id=guest.get('id')|default(guest.cid) %}
+<li class="row" id="guest_{{ id }}">
+    <input type="hidden" name="id_{{ id }}" value="{{ id }}" />
+    <div class="col-md-12">
+        <div class="input-group">
+            <input type="text" class="form-control" name="name_{{ id }}" value="{{ guest.get('name') }}" placeholder="Name" style="width:70%" />
+            <select class="form-control" name="type_{{ id }}" style="width:30%;">
+                <option value="adult"{% if guest.get('type') == 'adult' %} selected="selected"{% endif %}>Adult</option>
+                <option value="child"{% if guest.get('type') == 'child' %} selected="selected"{% endif %}>Child</option>
+            </select>
+            <span class="input-group-btn">
+                <span class="btn btn-danger remove-guest" data-id="{{ id }}">
+                    <span class="glyphicon glyphicon-trash"></span>
+                </span>
+            </span>
+        </div>
+    </div>
+</li>
