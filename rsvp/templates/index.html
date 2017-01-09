@@ -46,10 +46,11 @@
                     <div id="navbar-collapse" class="navbar-collapse collapse  text-center">
                         <ul class="nav navbar-nav center-block">
                             <li class="nav-item"><a class="scrollto" href="#wedding">The Wedding</a></li>
-{#                            <li class="nav-item"><a class="scrollto" href="#story">Our Story</a></li>#}
+                            <li class="nav-item"><a class="scrollto" href="#story">Our Story</a></li>
 {#                            <li class="nav-item"><a class="scrollto" href="#gallery">Gallery</a></li>#}
 {#                            <li class="nav-item"><a class="scrollto" href="#gift">Registries</a></li>#}
                             <li class="nav-item"><a href="#" data-toggle="modal" data-target="#rsvp_modal">RSVP</a></li>
+                            <li class="nav-item"><a href="#" data-toggle="modal" data-target="#accommodations_modal">Accommodations</a></li>
                         </ul>
                     </div>
                 </nav>
@@ -60,7 +61,7 @@
                 <div class="row">
                     <div class="hero-box col-md-5 col-sm-7 col-xs-12">
                         <h1 class="headline script">
-                            <span class="names display-block">{{ NAMES[0] }} & {{ NAMES[1] }}</span>
+                            <span class="names display-block">{{ SITE.bride_name }} & {{ SITE.groom_name }}</span>
                             <span class="statement display-block">
                                 <span class="swirl-left"></span>
                                 <span class="statement-text">are getting hitched</span>
@@ -83,7 +84,7 @@
         <footer class="footer">
             <div class="footer-content text-center">
                 <div class="container">
-                    <div class="credit">Wedding/RSVP site made by Leah's big brother Ben.</div>
+                    <div class="credit">Wedding/RSVP site made by Leah's big brother Ben and her handsomest brother Dan.</div>
                 </div>
             </div>
         </footer>
@@ -91,6 +92,7 @@
         {% include 'modals/gallery.html' %}
         {% include 'modals/directions.html' %}
         {% include 'modals/facilities.html' %}
+        {% include 'modals/accommodations.html' %}
         {% block js %}
             <script src="https://cdnjs.cloudflare.com/ajax/libs/js-cookie/2.1.3/js.cookie.min.js" integrity="sha256-S20kSlaai+/AuQHj3KjoLxmxiOLT5298YvzpaTXtYxE=" crossorigin="anonymous" type="text/javascript"></script>
             <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous" type="text/javascript"></script>

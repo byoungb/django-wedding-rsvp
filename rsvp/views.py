@@ -5,6 +5,7 @@ from django.views.generic.base import TemplateResponseMixin, View
 from django.utils.timezone import make_aware
 from django.http.request import QueryDict
 
+from rsvp.models import Site
 from rsvp.util.mixins.json import JsonResponseMixin
 from rsvp.forms import SuggestForm, SearchForm
 from rsvp.util.encoders import InviteEncoder
@@ -17,14 +18,16 @@ class IndexView(TemplateResponseMixin, View):
 
     @method_decorator(record_views)
     def get(self, request, *args, **kwargs):
+        site = Site.objects.get(domain=request.get_host())
+        print(site.ceremony.duration)
         return self.render_to_response({
             'GOOGLE_MAPS_API_KEY': 'AIzaSyCYhdc-qA-ut3oH4YNfVFKHHgnvIo6eM0U',
-            'CEREMONY_DATETIME': make_aware(datetime(2017, 5, 13, 14)),
-            'CEREMONY_DURATION': timedelta(hours=2),
-            'RECEPTION_DATETIME': make_aware(datetime(2017, 5, 13, 18)),
-            'RECEPTION_DURATION': timedelta(hours=4),
-            'RSVP_DEADLINE': date(2017, 4, 1),
-            'NAMES': ('Leah', 'Adam'),
+            'CEREMONY_DATETIME': site.ceremony.datetime,
+            'CEREMONY_DURATION': site.ceremony.duration,
+            'RECEPTION_DATETIME': site.reception.datetime,
+            'RECEPTION_DURATION': site.reception.duration,
+            'STORIES': list(site.stories.all()),
+            'SITE': site,
             'suggest_form': SuggestForm(
                 auto_id=None,
             ),

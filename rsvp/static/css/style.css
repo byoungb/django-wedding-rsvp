@@ -637,7 +637,7 @@ label {
 
 /* ======= Story Section ======= */
 .story-section {
-    background: #413a38 url('../images/story-bg.jpg') no-repeat 50% top;
+    background: #413a38 url('../img/story-bg.jpg') no-repeat 50% top;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -1084,6 +1084,31 @@ label {
 }
 
 .modal-rsvp .additional-info {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    color: #786b67;
+}
+
+/* Accommodations Modal */
+.modal-accommodations .modal-title {
+    margin-bottom: 0;
+}
+
+.modal-accommodations textarea.form-control {
+    height: 120px;
+}
+
+.modal-accommodations .radio-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.modal-accommodations .radio-group label {
+    font-size: 16px;
+    margin-bottom: 15px;
+}
+
+.modal-accommodations .additional-info {
     margin-top: 30px;
     margin-bottom: 30px;
     color: #786b67;
