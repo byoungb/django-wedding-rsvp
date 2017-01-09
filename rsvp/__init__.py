@@ -16,6 +16,11 @@ class STATUSES(Choice):
     ATTENDING = 'attending'
     DECLINED = 'declined'
 
+class EVENT_TYPES(Choice):
+    CEREMONY = 'ceremony', 'Ceremony'
+    RECEPTION = 'reception', 'Reception'
+    GIFT_OPENING = 'gift_opening', 'Gift Opening'
+
 
 def login(request, invite):
     request.session[LOGIN_KEY] = invite.id
