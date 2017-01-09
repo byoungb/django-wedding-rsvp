@@ -59,6 +59,7 @@
                 guest: new GuestModel()
             });
             this.$('ul.guests-list').append(html);
+            this.$('ul.guests-list li:last-child input').focus();
         },
         remove_guest: function (event) {
             var guest_id = this.$(event.currentTarget).data('id');

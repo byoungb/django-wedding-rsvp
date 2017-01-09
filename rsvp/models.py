@@ -70,6 +70,7 @@ class View(models.Model):
 class Guest(models.Model):
     name = models.CharField(
         max_length=128,
+        blank=True,
     )
     invite = models.ForeignKey(
         related_name='guests',
