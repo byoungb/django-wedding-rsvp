@@ -1,11 +1,13 @@
+from __future__ import unicode_literals
+
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.http import urlencode
 from django.urls.base import reverse
 from django.db import models
 
+from rsvp import STATUSES, HASH, GUEST_TYPES, EVENT_TYPES
 from rsvp.managers import InviteQuerySet
 from rsvp.util.qrcode import QRCode
-from rsvp import STATUSES, HASH, EVENT_TYPES
 
 
 class Invite(models.Model):
@@ -49,11 +51,10 @@ class Invite(models.Model):
             }),
         )
 
-    def qr_code(self, request):
+    def qr_code(self):
+        # TODO: Use domain from site
         return QRCode(
-            url=request.build_absolute_uri(
-                location=self.get_absolute_url(),
-            ),
+            url='https://local.rsvp.com{}'.format(self.get_absolute_url()),
         )
 
 
@@ -67,26 +68,19 @@ class View(models.Model):
     )
 
 
-class Meal(models.Model):
-    name = models.CharField(
-        max_length=32,
-    )
-    description = models.TextField(
-        null=True,
-    )
-
-
 class Guest(models.Model):
     name = models.CharField(
         max_length=128,
+        blank=True,
     )
     invite = models.ForeignKey(
         related_name='guests',
         to='rsvp.Invite',
     )
-    meal = models.ForeignKey(
-        related_name='guests',
-        to='rsvp.Meal',
+    type = models.CharField(
+        default=GUEST_TYPES.ADULT,
+        choices=GUEST_TYPES,
+        max_length=16,
     )
 
 

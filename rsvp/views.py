@@ -8,8 +8,8 @@ from django.http.request import QueryDict
 from rsvp.models import Site
 from rsvp.util.mixins.json import JsonResponseMixin
 from rsvp.forms import SuggestForm, SearchForm
-from rsvp.util.encoders import InviteEncoder
 from rsvp.decorators import record_views
+from rsvp.encoders import InviteEncoder
 from rsvp import login
 
 

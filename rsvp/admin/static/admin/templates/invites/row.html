@@ -1,8 +1,8 @@
 <tr>
     <td>
-{#        <img src="data:image/svg+xml;base64,{{ invite.qr_code(request) }}" style="width:100px;" />#}
+        <span class="btn btn-sm btn-default invite-edit" data-id="{{ invite.get('id') }}">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </span>
     </td>
-    <td>
-        <a href="{{ invite.get('url') }}">{{ invite.get('name') }}</a>
-    </td>
+    <td>{{ invite.get('name') }}</td>
 </tr>

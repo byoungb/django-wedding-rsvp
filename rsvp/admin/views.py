@@ -1,27 +1,11 @@
 from json import loads
 
-from django.forms.models import model_to_dict
 from django.views.generic.base import TemplateResponseMixin, View
 
-from rsvp.util.encoders import InviteEncoder as BaseInviteEncoder
 from rsvp.util.mixins.json import JsonResponseMixin
+from rsvp.admin.encoders import InviteEncoder
 from rsvp.admin.forms import InviteForm
 from rsvp.models import Invite
-
-
-class InviteEncoder(BaseInviteEncoder):
-    def default(self, o):
-        if isinstance(o, Invite):
-            data = model_to_dict(
-                instance=o,
-                fields=[
-                    'id',
-                    'name',
-                ],
-            )
-            data['url'] = o.get_absolute_url()
-            return data
-        return super(InviteEncoder, self).default(o)
 
 
 class IndexView(TemplateResponseMixin, View):
@@ -45,6 +29,19 @@ class InviteView(TemplateResponseMixin, JsonResponseMixin, View):
     def post(self, request, *args, **kwargs):
         form = InviteForm(
             data=loads(request.body),
+        )
+        if not form.is_valid():
+            raise Exception(form.errors)
+        invite = form.save()
+        return self.json_to_response(invite)
+
+    def put(self, request, invite_id, *args, **kwargs):
+        instance = Invite.objects.get(
+            id=invite_id,
+        )
+        form = InviteForm(
+            data=loads(request.body),
+            instance=instance,
         )
         if not form.is_valid():
             raise Exception(form.errors)

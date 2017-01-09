@@ -7,6 +7,11 @@ LOGIN_KEY = 'invite_id'
 HASH = InviteHash()
 
 
+class GUEST_TYPES(Choice):
+    ADULT = 'adult'
+    CHILD = 'child'
+
+
 class STATUSES(Choice):
     ATTENDING = 'attending'
     DECLINED = 'declined'
