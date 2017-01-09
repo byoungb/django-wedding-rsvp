@@ -1,0 +1,158 @@
+[
+{
+    "model": "contenttypes.contenttype",
+    "pk": 1,
+    "fields": {
+        "app_label": "contenttypes",
+        "model": "contenttype"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 2,
+    "fields": {
+        "app_label": "sessions",
+        "model": "session"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 3,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "view"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 5,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "guest"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 6,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "invite"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 7,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "site"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 8,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "event"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 9,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "address"
+    }
+},
+{
+    "model": "contenttypes.contenttype",
+    "pk": 10,
+    "fields": {
+        "app_label": "rsvp",
+        "model": "story"
+    }
+},
+{
+    "model": "rsvp.address",
+    "pk": 1,
+    "fields": {
+        "name": "St Athanasius",
+        "street": "711 Stevens Street",
+        "city": "Jesup",
+        "state": "IA",
+        "zip": 50648,
+        "lat": 42.473451,
+        "lon": -92.06226
+    }
+},
+{
+    "model": "rsvp.address",
+    "pk": 2,
+    "fields": {
+        "name": "Heartland Acres",
+        "street": "2600 Swan Lake Blvd",
+        "city": "Independence",
+        "state": "IA",
+        "zip": 50644,
+        "lat": 42.448675,
+        "lon": -91.923585
+    }
+},
+{
+    "model": "rsvp.event",
+    "pk": 1,
+    "fields": {
+        "site": 1,
+        "address": 1,
+        "event_type": "ceremony",
+        "datetime": "2017-05-13T14:00:00Z",
+        "duration": "01:00:00"
+    }
+},
+{
+    "model": "rsvp.event",
+    "pk": 2,
+    "fields": {
+        "site": 1,
+        "address": 2,
+        "event_type": "reception",
+        "datetime": "2017-05-13T16:30:00Z",
+        "duration": "07:30:00"
+    }
+},
+{
+    "model": "rsvp.site",
+    "pk": 1,
+    "fields": {
+        "bride_name": "Leah",
+        "groom_name": "Adam",
+        "domain": "leah-adam.com"
+    }
+},
+{
+    "model": "rsvp.story",
+    "pk": 1,
+    "fields": {
+        "site": 1,
+        "title": "Leah Stinks",
+        "body": "\"Yep I sure do\"-Leah Youngblut"
+    }
+},
+{
+    "model": "rsvp.story",
+    "pk": 2,
+    "fields": {
+        "site": 1,
+        "title": "Jazz Hands",
+        "body": "Stuff ad dfa adf "
+    }
+},
+{
+    "model": "rsvp.story",
+    "pk": 32,
+    "fields": {
+        "site": 1,
+        "title": "Hello",
+        "body": "adfs adsf afd sfda sf ads fada sfd adsf"
+    }
+}
+]
