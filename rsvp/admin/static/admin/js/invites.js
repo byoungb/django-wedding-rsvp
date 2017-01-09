@@ -42,8 +42,8 @@
             'autocomplete': 'off'
         },
         events: {
-            'click span.remove-guest': 'remove_guest',
-            'click span.add-guest': 'add_guest',
+            'click button.remove-guest': 'remove_guest',
+            'click button.add-guest': 'add_guest',
             'hidden.bs.modal': 'remove',
             'submit': 'submit'
         },
@@ -64,7 +64,6 @@
         remove_guest: function (event) {
             var guest_id = this.$(event.currentTarget).data('id');
             this.$('#guest_' + guest_id).remove();
-            console.log(this.model.get('guests').remove(guest_id));
         },
         submit: function (event) {
             event.preventDefault();
@@ -76,11 +75,9 @@
                         type: data['type_' + value]
                     };
                     if (value.match('^c')) {
-                        console.log('create')
                         var guest = new GuestModel(guest_data);
                         this.model.get('guests').add(guest);
                     } else {
-                        console.log('update')
                         this.model.get('guests').get(value).set(guest_data);
                     }
                 }

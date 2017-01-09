@@ -9,9 +9,9 @@
                 <option value="child"{% if guest.get('type') == 'child' %} selected="selected"{% endif %}>Child</option>
             </select>
             <span class="input-group-btn">
-                <span class="btn btn-danger remove-guest" data-id="{{ id }}">
+                <button type="button" class="btn btn-danger remove-guest" data-id="{{ id }}">
                     <span class="glyphicon glyphicon-trash"></span>
-                </span>
+                </button>
             </span>
         </div>
     </div>
