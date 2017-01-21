@@ -24,7 +24,6 @@
         tagName: 'form',
         className: 'modal fade',
         attributes: {
-            'onkeypress input': 'return event.keyCode != 13;',
             'autocomplete': 'off'
         },
         events: {
