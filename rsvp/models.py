@@ -156,7 +156,20 @@ class Story(models.Model):
         related_name='stories',
         to='rsvp.Site',
     )
+    icon = models.ForeignKey(
+        related_name='stories',
+        to='rsvp.Icon',
+    )
     title = models.CharField(
         max_length=128,
     )
     body = models.TextField()
+
+
+class Icon(models.Model):
+    font_family = models.CharField(
+        max_length=32,
+    )
+    font_class = models.CharField(
+        max_length=32,
+    )

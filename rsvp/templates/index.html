@@ -61,7 +61,7 @@
                 <div class="row">
                     <div class="hero-box col-md-5 col-sm-7 col-xs-12">
                         <h1 class="headline script">
-                            <span class="names display-block">{{ SITE.bride_name }} & {{ SITE.groom_name }}</span>
+                            <span class="names display-block">{{ site.bride_name }} & {{ site.groom_name }}</span>
                             <span class="statement display-block">
                                 <span class="swirl-left"></span>
                                 <span class="statement-text">are getting hitched</span>
@@ -69,7 +69,7 @@
                             </span>
                         </h1>
                         <div class="date">
-                            <span class="date-text">{{ CEREMONY_DATETIME|date('F j, Y') }}</span>
+                            <span class="date-text">{{ site.ceremony.datetime|date('F j, Y') }}</span>
                         </div>
                         <a class="btn btn-primary btn-rsvp" href="#" data-toggle="modal" data-target="#rsvp_modal">RSVP Now</a>
                     </div>
@@ -111,7 +111,7 @@
         {% block inline_js %}
             <script type="text/javascript">
                 $(function () {
-                    var ceremony_date = new Date("{{ CEREMONY_DATETIME|date('c') }}");
+                    var ceremony_date = new Date("{{ site.ceremony.datetime|date('c') }}");
                     $('#search_form').search("{{ url('search') }}");
                     $('#countdown_box').countdown(ceremony_date);
                 });

@@ -1,0 +1,314 @@
+[
+{
+    "model": "rsvp.icon",
+    "pk": 1,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-lock"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 2,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-calendar"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 3,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-map"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 4,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-glasses"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 5,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-yinyang"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 6,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-phone-alt"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 7,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-cupcake"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 8,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-heart"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 9,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-pot"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 10,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-smiley-2"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 11,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-teapot"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 12,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-key"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 13,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-notebook"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 14,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-hands"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 15,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-phone"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 16,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-letter"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 17,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-lightening"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 18,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-cat"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 19,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-light-bulb"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 20,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-cake-cover"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 21,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-cup"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 22,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-smiley-4"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 23,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-house"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 24,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-moon"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 25,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-bottle"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 26,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-candle"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 27,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-heart-alt"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 28,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-wine"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 29,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-couple"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 30,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-smiley-3"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 31,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-cloud"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 32,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-smiley-1"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 33,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-jar"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 34,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-plant"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 35,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-umbrella"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 36,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-folder"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 37,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-clock"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 38,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-message"
+    }
+},
+{
+    "model": "rsvp.icon",
+    "pk": 39,
+    "fields": {
+        "font_family": "loveicon",
+        "font_class": "icon-gift"
+    }
+}
+]

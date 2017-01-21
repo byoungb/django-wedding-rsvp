@@ -1,6 +1,6 @@
 from django import forms
 
-from rsvp.models import Invite, Guest
+from rsvp.models import Invite, Guest, Story
 
 
 class GuestForm(forms.ModelForm):
@@ -38,3 +38,13 @@ class InviteForm(forms.ModelForm):
         for guest in guests.values():
             guest.delete()
         return instance
+
+
+class StoryForm(forms.ModelForm):
+    class Meta:
+        model = Story
+        fields = [
+            'title',
+            'body',
+            'icon',
+        ]

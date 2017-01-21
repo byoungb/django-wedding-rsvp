@@ -1,0 +1,15 @@
+{% set icon=story.get('icon') %}
+<tr>
+    <td>
+        <span class="btn btn-sm btn-default story-edit" data-id="{{ story.get('id') }}">
+            <span class="glyphicon glyphicon-pencil"></span>
+        </span>
+    </td>
+    <td>
+        {% if not icon.isNew() %}
+            <span class="{{ icon.get('font_family') }} {{ icon.get('font_class') }}"></span>
+        {% endif %}
+    </td>
+    <td>{{ story.get('title') }}</td>
+    <td>{{ story.get('body') }}</td>
+</tr>

@@ -14,15 +14,15 @@
                     <ul class="meta-list list-unstyled text-left center-block">
                         <li>
                             <span class="icon-calendar love-icon"></span>
-                            <span>{{ CEREMONY_DATETIME|date('l - F jS, Y') }}</span>
+                            <span>{{ site.ceremony.datetime|date('l - F jS, Y') }}</span>
                         </li>
                         <li>
                             <span class="icon-clock love-icon"></span>
-                            <span>{{ CEREMONY_DATETIME|date('g:i a') }} - {{ (CEREMONY_DATETIME + CEREMONY_DURATION)|date('g:i a') }}</span>
+                            <span>{{ site.ceremony.datetime|date('g:i a') }} - {{ (site.ceremony.datetime + site.ceremony.duration)|date('g:i a') }}</span>
                         </li>
                         <li>
                             <span class="icon-map love-icon"></span>
-                            <span>{{ SITE.ceremony.address.name }}</span>
+                            <span>{{ site.ceremony.address.name }}</span>
                         </li>
                     </ul>
                 </div>
@@ -34,11 +34,11 @@
                     <ul class="meta-list list-unstyled text-left center-block">
                         <li>
                             <span class="icon-calendar love-icon"></span>
-                            <span>{{ RECEPTION_DATETIME|date('l - F jS, Y') }}</span>
+                            <span>{{ site.reception.datetime|date('l - F jS, Y') }}</span>
                         </li>
                         <li>
                             <span class="icon-clock love-icon"></span>
-                            <span>{{ RECEPTION_DATETIME|date('g:i a') }} - {{ (RECEPTION_DATETIME + RECEPTION_DURATION)|date('g:i a') }}</span>
+                            <span>{{ site.reception.datetime|date('g:i a') }} - {{ (site.reception.datetime + site.reception.duration)|date('g:i a') }}</span>
                         </li>
                         <li>
                             <span class="icon-map love-icon"></span>
