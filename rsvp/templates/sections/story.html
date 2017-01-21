@@ -23,7 +23,7 @@
                                                 <span class="{{ icon.font_family }} {{ icon.font_class }}"></span>
                                                 <span>{{ story.title }}</span>
                                             </h4>
-                                            <span>{{ story.body }}</span>
+                                            {{ story.body|linebreaks }}
                                         </div>
                                     {% endwith %}
                                 {% endfor %}
