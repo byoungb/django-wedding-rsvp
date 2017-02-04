@@ -70,10 +70,10 @@ $(document).ready(function () {
 
     $('.carousel-inner').swipe({
         swipeLeft: function() {
-            $(this).parent().carousel('prev');
+            $(this).parent().carousel('next');
         },
         swipeRight: function() {
-            $(this).parent().carousel('next');
+            $(this).parent().carousel('prev');
         },
         threshold: 0
     });
