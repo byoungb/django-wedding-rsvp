@@ -74,8 +74,7 @@ $(document).ready(function () {
         },
         swipeRight: function() {
             $(this).parent().carousel('prev');
-        },
-        threshold: 0
+        }
     });
 
 });
