@@ -51,6 +51,7 @@ $(document).ready(function () {
     });
 
     $('#hero .statement').addClass('animated bounceIn delayp4');
+
     // $('#wedding .title-text').css('opacity', 0).one('inview', function(event, isInView) {
     //     if (isInView) {$(this).addClass('animated fadeInUp delayp2');}
     // });
@@ -66,6 +67,16 @@ $(document).ready(function () {
     // $('#gift .couple-profile').css('opacity', 0).one('inview', function(event, isInView) {
     //     if (isInView) {$(this).addClass('animated bounceIn delayp3');}
     // });
+
+    $('.carousel-inner').swipe({
+        swipeLeft: function() {
+            $(this).parent().carousel('prev');
+        },
+        swipeRight: function() {
+            $(this).parent().carousel('next');
+        },
+        threshold: 0
+    });
 
 });
 

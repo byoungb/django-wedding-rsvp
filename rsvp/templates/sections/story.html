@@ -9,7 +9,7 @@
                         <span class="title-deco-right"></span>
                     </h3>
                     <div class="content-container text-left">
-                        <div id="story-carousel" class="story-carousel carousel slide" data-ride="carousel">
+                        <div id="story-carousel" class="story-carousel carousel slide" data-ride="carousel" data-interval="false">
                             <ol class="carousel-indicators">
                                 {% for story in stories %}
                                     <li data-target="#story-carousel" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}>&nbsp;</li>

@@ -1,68 +1,52 @@
-{#<section id="gallery" class="gallery-section section">#}
-{#    <div class="container text-center">#}
-{#        <h3 class="title script">#}
-{#            <span class="title-deco-left"></span><span class="title-text">Gallery</span><span class="title-deco-right"></span>#}
-{#        </h3>#}
-{#        <div class="intro">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor.</div>#}
-{#        <div class="gallery-container">#}
-{##}
-{#            <div id="photos-wrapper" class="photos-wrapper">#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-1.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-1.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-2.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-2.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-3.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-3.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-4.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-4.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-5.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-5.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item w2">#}
-{#                    <a href="assets/images/gallery/pic-6.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-6.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-7.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-7.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-8.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-8.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-9.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-9.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-10.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-10.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-11.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-11.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item w2">#}
-{#                    <a href="assets/images/gallery/pic-12.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-12.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-13.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-13.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-14.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-14.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-15.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-15.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-16.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-16.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-17.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-17.jpg" alt="" /></a>#}
-{#                </div>#}
-{#                <div class="item">#}
-{#                    <a href="assets/images/gallery/pic-18.jpg" data-gallery><img class="img-responsive" src="assets/images/gallery/pic-18.jpg" alt="" /></a>#}
-{#                </div>#}
-{#            </div><!--//photos-wrapper-->#}
-{##}
-{#        </div><!--//gallery-container-->#}
-{#    </div><!--//container-->#}
-{#</section><!--//gallery-section-->#}
+<div id="blueimp-gallery" class="blueimp-gallery" data-use-bootstrap-modal="false">
+    <div class="slides"></div>
+    <h3 class="title"></h3>
+    <a class="prev">‹</a>
+    <a class="next">›</a>
+    <a class="close">×</a>
+    <a class="play-pause"></a>
+    <ol class="indicator"></ol>
+    <div class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" aria-hidden="true">&times;</button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body next"></div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default pull-left prev">
+                        <i class="glyphicon glyphicon-chevron-left"></i>
+                        Previous
+                    </button>
+                    <button type="button" class="btn btn-primary next">
+                        Next
+                        <i class="glyphicon glyphicon-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<section id="gallery" class="gallery-section section">
+    <div class="container text-center">
+        <h3 class="title script">
+            <span class="title-deco-left"></span>
+            <span class="title-text">Gallery</span>
+            <span class="title-deco-right"></span>
+        </h3>
+        <div class="gallery-container">
+            <div id="photos-wrapper" class="photos-wrapper">
+                {% for idx in range(1, 9) %}
+                    {% with src=static('img/gallery/pic{}.jpg'.format(idx)) %}
+                        <div class="item">
+                            <a href="{{ src }}" data-gallery>
+                                <img class="img-responsive" src="{{ src }}" alt="" />
+                            </a>
+                        </div>
+                    {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</section>

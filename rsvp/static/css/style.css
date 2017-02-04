@@ -1446,3 +1446,8 @@ label {
 .config-panel .close .fa {
     color: #fff;
 }
+
+.blueimp-gallery > .next,
+.blueimp-gallery > .prev {
+    line-height: 40px;
+}
