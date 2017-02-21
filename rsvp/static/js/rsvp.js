@@ -1,5 +1,21 @@
 (function (globals, $) {
 
+    var button_mapping = {
+        ATTENDING_SINGLE: 'I will be there!',
+        ATTENDING_GROUP: 'We will be there!',
+        ATTENDING_SOME: 'Some of us will be there!',
+        NOT_ATTENDING_SINGLE: 'I am sorry I can\'t come.',
+        NOT_ATTENDING_GROUP: 'We are sorry we can\'t come.'
+    };
+
+    var title_mapping = {
+        ATTENDING_SINGLE: 'Looking forward to seeing you there!',
+        ATTENDING_GROUP: 'Looking forward to seeing all of you there!',
+        ATTENDING_SOME: 'Looking forward to seeing some of you there!',
+        NOT_ATTENDING_SINGLE: 'So sorry you can\'t come.',
+        NOT_ATTENDING_GROUP: 'So sorry none of you can come.'
+    };
+
     var GuestModel = Backbone.Model.extend({
         is_attending: function () {
             return (this.is_active() && this.get('is_attending'));
@@ -19,7 +35,7 @@
                 return model.is_active();
             }));
         },
-        buttonText: function () {
+        mode: function () {
             var active_guests = this.activeGuests();
             var all_attending = active_guests.all(function (model) {
                 return model.get('is_attending');
@@ -28,11 +44,17 @@
                 return model.get('is_attending');
             });
             if (all_attending) {
-                return (active_guests.length == 1) ? 'I will be there!' : 'We will be there!';
+                return (active_guests.length == 1) ? 'ATTENDING_SINGLE' : 'ATTENDING_GROUP';
             } else if (!any_attending) {
-                return (active_guests.length == 1) ? 'I am sorry I can\'t come.' : 'We are sorry we can\'t come.';
+                return (active_guests.length == 1) ? 'NOT_ATTENDING_SINGLE' : 'NOT_ATTENDING_GROUP';
             }
-            return 'Some of us will be there!';
+            return 'ATTENDING_SOME';
+        },
+        buttonText: function () {
+            return button_mapping[this.mode()];
+        },
+        titleText: function () {
+            return title_mapping[this.mode()];
         }
     });
 
@@ -137,9 +159,10 @@
         events: {
             'submit': 'submit'
         },
-        initialize: function (options) {
-            this.collection = this.model.get('guests');
+        load: function (model) {
+            this.collection = model.get('guests');
             this.listenTo(this.collection, 'change', this.change);
+            this.model = model;
             this.render();
         },
         change: function () {
@@ -161,12 +184,14 @@
         },
         submit: function (event) {
             this.model.save();
-            this.model.trigger('submitted');
+            this.trigger('submitted', this.model);
+            this.$el.hide();
         }
     });
 
     var ModalView = Backbone.View.extend({
         events: {
+            // 'hidden.bs.modal': 'hide',
             'shown.bs.modal': 'show'
         },
         template: _.template(
@@ -179,23 +204,29 @@
                 collection: new InviteCollection(),
                 el: this.$('#search_form')
             });
+            this.rsvp_view = new RsvpView({
+                el: this.$('#rsvp_form')
+            });
             this.listenTo(this.search_view, 'selected', this.selected);
+            this.listenTo(this.rsvp_view, 'submitted', this.submitted);
+        },
+        submitted: function (model) {
+            var text = model.get('guests').titleText();
+            this.$('.subtitle').html(text);
         },
         selected: function (model) {
             var html = this.template(model);
             this.$('.subtitle').html(html);
-            new RsvpView({
-                el: this.$('#rsvp_form'),
-                model: model
-            });
+            this.rsvp_view.load(model);
         },
+        // hide: function () {
+        // },
         show: function () {
-            this.$('#search_form').show();
-            this.$('#search_form input[name="name"]').focus();
+            this.$('#search_form').show().find('input[name="name"]').focus();
         }
     });
 
-    $.fn.rsvp_modal = function (url) {
+    $.fn.rsvp_modal = function () {
         return this.each(function () {
             if (!$.data(this, 'rsvp_modal')) {
                 $.data(this, 'rsvp_modal', new ModalView({
