@@ -125,6 +125,17 @@ a.btn-primary:focus,
 #search_form .form-control {
     text-align: center;
 }
+#search_form .list-group-item p {
+    margin: 0;
+}
+
+#rsvp_form .form-group .form-inline {
+    margin-bottom: 5px;
+}
+#rsvp_form .form-group .form-inline .form-control {
+    margin-right: 5px;
+    height: auto;
+}
 
 .code-group .form-control {
     text-transform: uppercase;

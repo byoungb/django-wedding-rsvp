@@ -1,13 +1,10 @@
 from __future__ import unicode_literals
 
 from django.core.exceptions import ObjectDoesNotExist
-from django.utils.http import urlencode
-from django.urls.base import reverse
 from django.db import models
 
-from rsvp import STATUSES, HASH, GUEST_TYPES, EVENT_TYPES
+from rsvp import GUEST_TYPES, EVENT_TYPES
 from rsvp.managers import InviteQuerySet
-from rsvp.util.qrcode import QRCode
 
 
 class Invite(models.Model):
@@ -20,42 +17,14 @@ class Invite(models.Model):
     name = models.CharField(
         max_length=128,
     )
-    max_guests = models.IntegerField(
-        default=2,
-    )
-    status = models.CharField(
-        choices=STATUSES,
-        max_length=32,
-        null=True,
+    is_submitted = models.BooleanField(
+        default=False,
     )
 
     objects = InviteQuerySet.as_manager()
 
     def __unicode__(self):
         return self.name
-
-    @property
-    def key(self):
-        return HASH.encode(self.pk)
-
-    def check_key(self, key):
-        return self.key == key
-
-    def get_absolute_url(self):
-        return '{path}?{query}'.format(
-            path=reverse(
-                viewname='index',
-            ),
-            query=urlencode({
-                'key': self.key,
-            }),
-        )
-
-    def qr_code(self):
-        # TODO: Use domain from site
-        return QRCode(
-            url='https://local.rsvp.com{}'.format(self.get_absolute_url()),
-        )
 
 
 class View(models.Model):
@@ -81,6 +50,9 @@ class Guest(models.Model):
         default=GUEST_TYPES.ADULT,
         choices=GUEST_TYPES,
         max_length=16,
+    )
+    is_attending = models.BooleanField(
+        default=True,
     )
 
 

@@ -12,10 +12,6 @@ class GUEST_TYPES(Choice):
     CHILD = 'child'
 
 
-class STATUSES(Choice):
-    ATTENDING = 'attending'
-    DECLINED = 'declined'
-
 class EVENT_TYPES(Choice):
     CEREMONY = 'ceremony', 'Ceremony'
     RECEPTION = 'reception', 'Reception'

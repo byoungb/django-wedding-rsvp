@@ -43,9 +43,9 @@ class InviteEncoder(ModelEncoder):
             return model_to_dict(
                 instance=o,
                 fields=[
-                    'id',
-                    'name',
                     'type',
+                    'name',
+                    'id',
                 ],
             )
         if isinstance(o, Invite):
@@ -58,7 +58,6 @@ class InviteEncoder(ModelEncoder):
             )
             data.update({
                 'guests': o.guests.all(),
-                'key': o.key,
             })
             return data
         return super(InviteEncoder, self).default(o)

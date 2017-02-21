@@ -1,6 +1,6 @@
 from django.conf.urls import url, include
 
-from rsvp.views import IndexView, SearchView
+from rsvp.views import IndexView, ApiView
 
 urlpatterns = [
     url(
@@ -9,9 +9,9 @@ urlpatterns = [
         name='index',
     ),
     url(
-        regex=r'^search/$',
-        view=SearchView.as_view(),
-        name='search',
+        regex=r'^api/(?:(?P<invite_id>\d+))?$',
+        view=ApiView.as_view(),
+        name='api',
     ),
     url(
         regex=r'^admin/',

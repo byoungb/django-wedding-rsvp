@@ -19,6 +19,9 @@
     });
 
     var InviteModel = Backbone.Model.extend({
+        defaults: {
+            guests: new GuestCollection()
+        },
         parse: function (response) {
             response.guests = new GuestCollection(response.guests);
             return response;
