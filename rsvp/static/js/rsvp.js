@@ -73,24 +73,28 @@
     var GuestView = Backbone.View.extend({
         className: 'form-inline',
         template: _.template(
-            '<input type="text" name="name" value="<%= model.get(\'name\') %>" class="form-control" />' +
-            '<input type="checkbox" name="is_attending"<% if (model.is_attending()) { %> checked="checked"<% } %> />', {
+            '<div>' +
+                '<label>' +
+                    '<span>Name:&nbsp;</span>' +
+                    '<input type="text" name="name" value="<%= model.get(\'name\') %>" class="form-control" />' +
+                '</label>' +
+                '<label for="is_attending_<%= model.get(\'id\') %>">' +
+                    '<span>Attending:&nbsp;</span>' +
+                '</label>' +
+                '<span class="checkbox">' +
+                    '<input type="checkbox" name="is_attending" id="is_attending_<%= model.get(\'id\') %>" class="style"<% if (model.is_attending()) { %> checked="checked"<% } %> />' +
+                    '<label for="is_attending_<%= model.get(\'id\') %>">&nbsp;</label>' +
+                '</span>' +
+            '</div>', {
                 variable: 'model'
             }
         ),
         events: {
-            'switchChange.bootstrapSwitch input[name="is_attending"]': 'update',
-            'change input[name="name"]': 'update'
+            'change input': 'update'
         },
         initialize: function (options) {
             var html = this.template(this.model);
             this.$el.html(html);
-            this.$('input[name="is_attending"]').bootstrapSwitch({
-                offText: 'Not Attending',
-                onText: 'Attending',
-                offColor: 'danger',
-                onColor: 'success'
-            });
         },
         update: function (event) {
             this.model.set({
@@ -166,8 +170,8 @@
             this.render();
         },
         change: function () {
-            var text = this.collection.buttonText();
-            this.$('button[type="submit"]').text(text);
+            // var text = this.collection.buttonText();
+            // this.$('button[type="submit"]').text(text);
         },
         render: function () {
             this.$('div.guests').empty();
@@ -191,7 +195,7 @@
 
     var ModalView = Backbone.View.extend({
         events: {
-            // 'hidden.bs.modal': 'hide',
+            'hidden.bs.modal': 'hide',
             'shown.bs.modal': 'show'
         },
         template: _.template(
@@ -219,10 +223,11 @@
             this.$('.subtitle').html(html);
             this.rsvp_view.load(model);
         },
-        // hide: function () {
-        // },
         show: function () {
             this.$('#search_form').show().find('input[name="name"]').focus();
+        },
+        hide: function () {
+            this.rsvp_view.$el.hide();
         }
     });
 

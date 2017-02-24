@@ -8,10 +8,6 @@
         parse: function (response, options) {
             response.icon = new Backbone.Model(response.icon);
             return response;
-        },
-        url: function() {
-            var origUrl = Backbone.Model.prototype.url.call(this);
-            return origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
         }
     });
 
@@ -43,7 +39,6 @@
             this.$('li.btn.btn-primary').removeClass('btn-primary').addClass('btn-default');
             var icon_id = parseInt(this.$(event.currentTarget).data('id'));
             this.$('input[name="icon"]').val(icon_id);
-            console.log(icon_id)
         },
         submit: function (event) {
             event.preventDefault();

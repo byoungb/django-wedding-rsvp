@@ -12,23 +12,31 @@
         });
     });
 
-    var GuestModel = Backbone.Model.extend({});
+    var GuestModel = Backbone.Model.extend({
+        defaults: {
+            is_attending: false
+        }
+    });
 
     var GuestCollection = Backbone.Collection.extend({
-        model: GuestModel
+        model: GuestModel,
+        attending: function () {
+            return new GuestCollection(this.filter({
+                is_attending: true
+            }));
+        }
     });
 
     var InviteModel = Backbone.Model.extend({
-        defaults: {
-            guests: new GuestCollection()
+        defaults: function () {
+            return {
+                guests: new GuestCollection(),
+                is_submitted: false
+            };
         },
         parse: function (response) {
             response.guests = new GuestCollection(response.guests);
             return response;
-        },
-        url: function() {
-            var origUrl = Backbone.Model.prototype.url.call(this);
-            return origUrl + (origUrl.charAt(origUrl.length - 1) == '/' ? '' : '/');
         }
     });
 
@@ -51,7 +59,7 @@
             'submit': 'submit'
         },
         template: env.getTemplate('invites/form.html'),
-        initialize: function () {
+        initialize: function (options) {
             var html = this.template.render({
                 invite: this.model
             });
@@ -66,6 +74,7 @@
         },
         remove_guest: function (event) {
             var guest_id = this.$(event.currentTarget).data('id');
+            this.model.get('guests').remove(guest_id);
             this.$('#guest_' + guest_id).remove();
         },
         submit: function (event) {
@@ -85,17 +94,15 @@
                     }
                 }
             }, this);
-            this.model.set({
-                name: data.name
-            });
-            this.model.save();
-            this.$el.modal('hide');
+            this.model.save('name', data.name);
             this.model.collection.add(this.model);
+            this.$el.modal('hide');
         }
     });
 
     var InvitesView = Backbone.View.extend({
         events: {
+            'click span.invite-remove': 'remove',
             'click span.invite-edit': 'edit',
             'click span.invite-add': 'add'
         },
@@ -105,6 +112,14 @@
             this.collection.fetch();
         },
         render: function () {
+            var submitted = this.collection.filter({
+                is_submitted: true
+            });
+            var completed = (submitted.length / this.collection.length);
+            var text = (submitted.length + ' of ' + this.collection.length);
+            this.$('.progress-bar').css({
+                'width': (completed * 100) + '%'
+            }).html(text);
             this.$('table tbody').empty();
             var fragment = document.createDocumentFragment();
             this.collection.each(function (model) {
@@ -114,6 +129,14 @@
                 fragment.appendChild($(html).get(0));
             }, this);
             this.$('table tbody').html(fragment);
+        },
+        remove: function (event) {
+            var invite_id = this.$(event.currentTarget).data('id'),
+                model = this.collection.get(invite_id);
+            if (confirm('Are you sure?')) {
+                this.$('tr[data-invite_id="' + invite_id + '"]').remove();
+                model.destroy();
+            }
         },
         edit: function (event) {
             var invite_id = this.$(event.currentTarget).data('id'),

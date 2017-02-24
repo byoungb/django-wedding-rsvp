@@ -43,6 +43,7 @@ class InviteEncoder(ModelEncoder):
             return model_to_dict(
                 instance=o,
                 fields=[
+                    'is_attending',
                     'type',
                     'name',
                     'id',
@@ -52,8 +53,9 @@ class InviteEncoder(ModelEncoder):
             data = model_to_dict(
                 instance=o,
                 fields=[
-                    'id',
+                    'is_submitted',
                     'name',
+                    'id',
                 ],
             )
             data.update({

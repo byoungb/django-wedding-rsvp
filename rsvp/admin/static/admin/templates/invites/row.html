@@ -1,8 +1,19 @@
-<tr>
+{% set id=invite.get('id') %}
+<tr data-invite_id="{{ id }}">
+    <td class="text-center">
+        <div class="checkbox">
+            <input id="is_submitted_{{ id }}" type="checkbox" disabled="disabled"{% if invite.get('is_submitted') %} checked="checked"{% endif %} />
+            <label for="is_submitted_{{ id }}">&nbsp;</label>
+        </div>
+    </td>
+    <td>{{ invite.get('guests') }}</td>
+    <td>{{ invite.get('name') }}</td>
     <td>
-        <span class="btn btn-sm btn-default invite-edit" data-id="{{ invite.get('id') }}">
+        <span class="btn btn-sm btn-default invite-edit" data-id="{{ id }}">
             <span class="glyphicon glyphicon-pencil"></span>
         </span>
+        <span class="btn btn-sm btn-default invite-remove" data-id="{{ id }}">
+            <span class="glyphicon glyphicon-trash"></span>
+        </span>
     </td>
-    <td>{{ invite.get('name') }}</td>
 </tr>

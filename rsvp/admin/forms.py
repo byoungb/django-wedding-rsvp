@@ -7,6 +7,7 @@ class GuestForm(forms.ModelForm):
     class Meta:
         model = Guest
         fields = [
+            'is_attending',
             'name',
             'type',
         ]
@@ -16,6 +17,7 @@ class InviteForm(forms.ModelForm):
     class Meta:
         model = Invite
         fields = [
+            'is_submitted',
             'name',
         ]
 
@@ -35,6 +37,7 @@ class InviteForm(forms.ModelForm):
             )
             if form.is_valid():
                 form.save()
+        print guests
         for guest in guests.values():
             guest.delete()
         return instance

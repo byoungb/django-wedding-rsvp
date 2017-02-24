@@ -89,3 +89,10 @@ class InviteView(TemplateResponseMixin, JsonResponseMixin, View):
             raise Exception(form.errors)
         invite = form.save()
         return self.json_to_response(invite)
+
+    def delete(self, request, invite_id, *args, **kwargs):
+        instance = Invite.objects.get(
+            id=invite_id,
+        )
+        instance.delete()
+        return self.json_to_response()

@@ -2,7 +2,13 @@
 <li class="row" id="guest_{{ id }}">
     <input type="hidden" name="id_{{ id }}" value="{{ id }}" />
     <div class="col-md-12">
-        <div class="input-group">
+        <div class="input-group" style="margin-bottom:3px;">
+            <span class="input-group-addon">
+                <div class="checkbox">
+                    <input name="is_attending_{{ id }}" class="styled" type="checkbox"{% if guest.get('is_attending') %} checked="checked"{% endif %} />
+                    <label></label>
+                </div>
+            </span>
             <input type="text" class="form-control" name="name_{{ id }}" value="{{ guest.get('name') }}" placeholder="Name" style="width:70%" />
             <select class="form-control" name="type_{{ id }}" style="width:30%;">
                 <option value="adult"{% if guest.get('type') == 'adult' %} selected="selected"{% endif %}>Adult</option>

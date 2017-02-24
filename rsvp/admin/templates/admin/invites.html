@@ -2,8 +2,19 @@
 
 {% block title %}RSVP Admin{% endblock title %}
 
+{% block inline_css %}
+    <style type="text/css">
+        table.table tr td {
+            vertical-align: middle;
+        }
+    </style>
+{% endblock inline_css %}
+
 {% block contents %}
     <div id="invites">
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
         <table class="table table-bordered table-striped">
             <thead>
             <tr>
@@ -12,8 +23,10 @@
                 </th>
             </tr>
             <tr>
-                <th>Action</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
                 <th>Name</th>
+                <th>Action</th>
             </tr>
             </thead>
             <tbody></tbody>

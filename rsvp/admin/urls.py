@@ -9,12 +9,12 @@ urlpatterns = [
         name='index',
     ),
     url(
-        regex=r'^stories(?:/(?P<story_id>\d+))?/$',
+        regex=r'^stories/(?:(?P<story_id>\d+))?$',
         view=StoryView.as_view(),
         name='stories',
     ),
     url(
-        regex=r'^invites(?:/(?P<invite_id>\d+))?/$',
+        regex=r'^invites/(?:(?P<invite_id>\d+))?$',
         view=InviteView.as_view(),
         name='invites',
     ),
