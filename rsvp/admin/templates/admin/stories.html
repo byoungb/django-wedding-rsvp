@@ -4,7 +4,7 @@
 
 {% block css %}
     {{ super() }}
-    <link href="{{ static('css/loveicon.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ static('css/loveicon.css') }}?id=1" rel="stylesheet" type="text/css" />
 {% endblock css %}
 
 {% block inline_css %}
@@ -38,7 +38,7 @@
 
 {% block js %}
     {{ super() }}
-    <script src="{{ static('admin/js/stories.js') }}" type="text/javascript"></script>
+    <script src="{{ static('admin/js/stories.js') }}?id=1" type="text/javascript"></script>
 {% endblock js %}
 
 {% block inline_js %}

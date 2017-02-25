@@ -24,6 +24,26 @@
             return new GuestCollection(this.filter({
                 is_attending: true
             }));
+        },
+        break_down: function () {
+            var attending = this.attending(),
+                adult_count = 0,
+                child_count = 0;
+            attending.each(function (model) {
+                if (model.get('type') == 'adult') {
+                    adult_count += 1;
+                } else if (model.get('type') == 'child') {
+                    child_count += 1;
+                }
+            });
+            return {
+                adult_count: adult_count,
+                child_count: child_count
+            };
+        },
+        toString: function () {
+            var data = this.break_down();
+            return 'Adults: ' + data.adult_count + ' Children: ' + data.child_count;
         }
     });
 

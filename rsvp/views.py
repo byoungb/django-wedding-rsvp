@@ -1,4 +1,5 @@
 from json import loads
+from time import time
 
 from django.views.generic.base import TemplateResponseMixin, View
 from django.utils.decorators import method_decorator
@@ -24,6 +25,7 @@ class IndexView(TemplateResponseMixin, View):
             'site': Site.objects.get(
                 domain=request.get_host(),
             ),
+            'stamp': time(),
         })
 
 
