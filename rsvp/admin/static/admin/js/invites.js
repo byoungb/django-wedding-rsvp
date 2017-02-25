@@ -80,9 +80,11 @@
         submit: function (event) {
             event.preventDefault();
             var data = this.$el.serializeObject();
+            console.log(data);
             _.each(data, function (value, key) {
                 if (key.match('^id_')) {
                     var guest_data = {
+                        is_attending: (data['is_attending_' + value] == 'on'),
                         name: data['name_' + value],
                         type: data['type_' + value]
                     };

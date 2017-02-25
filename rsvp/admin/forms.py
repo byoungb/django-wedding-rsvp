@@ -37,7 +37,6 @@ class InviteForm(forms.ModelForm):
             )
             if form.is_valid():
                 form.save()
-        print guests
         for guest in guests.values():
             guest.delete()
         return instance
