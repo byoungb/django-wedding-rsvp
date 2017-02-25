@@ -26,24 +26,35 @@
             }));
         },
         break_down: function () {
-            var attending = this.attending(),
-                adult_count = 0,
-                child_count = 0;
-            attending.each(function (model) {
+            var output = {
+                not_attending_children: 0,
+                not_attending_adults: 0,
+                attending_children: 0,
+                attending_adults: 0
+            };
+            this.each(function (model) {
                 if (model.get('type') == 'adult') {
-                    adult_count += 1;
+                    if (!model.get('is_attending')) {
+                        output.not_attending_adults += 1;
+                    } else {
+                        output.attending_adults += 1;
+                    }
                 } else if (model.get('type') == 'child') {
-                    child_count += 1;
+                    if (!model.get('is_attending')) {
+                        output.not_attending_children += 1;
+                    } else {
+                        output.attending_children += 1;
+                    }
                 }
             });
-            return {
-                adult_count: adult_count,
-                child_count: child_count
-            };
+            return output;
         },
         toString: function () {
             var data = this.break_down();
-            return 'Adults: ' + data.adult_count + ' Children: ' + data.child_count;
+            return (
+                'Adults: ' + data.attending_adults + ' ' +
+                'Children: ' + data.attending_children
+            );
         }
     });
 
@@ -100,7 +111,6 @@
         submit: function (event) {
             event.preventDefault();
             var data = this.$el.serializeObject();
-            console.log(data);
             _.each(data, function (value, key) {
                 if (key.match('^id_')) {
                     var guest_data = {
@@ -134,6 +144,12 @@
             this.collection.fetch();
         },
         render: function () {
+            var totals = {
+                not_attending_children: 0,
+                not_attending_adults: 0,
+                attending_children: 0,
+                attending_adults: 0
+            };
             var submitted = this.collection.filter({
                 is_submitted: true
             });
@@ -145,12 +161,21 @@
             this.$('table tbody').empty();
             var fragment = document.createDocumentFragment();
             this.collection.each(function (model) {
+                var data = model.get('guests').break_down();
                 var html = this.template.render({
                     invite: model
                 });
                 fragment.appendChild($(html).get(0));
+                totals.not_attending_children += data.not_attending_children;
+                totals.not_attending_adults += data.not_attending_adults;
+                totals.attending_children += data.attending_children;
+                totals.attending_adults += data.attending_adults;
             }, this);
             this.$('table tbody').html(fragment);
+            var adults = totals.not_attending_adults + ' of ' + (totals.attending_adults + totals.not_attending_adults);
+            this.$('[data-stats="adults"]').text(adults);
+            var children = totals.not_attending_children + ' of ' + (totals.attending_children + totals.not_attending_children);
+            this.$('[data-stats="children"]').text(children);
         },
         remove: function (event) {
             var invite_id = this.$(event.currentTarget).data('id'),
