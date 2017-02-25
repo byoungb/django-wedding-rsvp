@@ -77,6 +77,13 @@ $(document).ready(function () {
         }
     });
 
+
+    $('#story-carousel').on('slid.bs.carousel', function (event) {
+        var story_id = $(event.relatedTarget).data('story_id'),
+            src = '/static/img/story-bg' + story_id + '.jpg';
+        $('.story-section').css('background-image', 'url(' + src + ')');
+    });
+
 });
 
 

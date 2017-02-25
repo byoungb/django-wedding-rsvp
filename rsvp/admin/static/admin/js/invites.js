@@ -140,15 +140,15 @@
         },
         template: env.getTemplate('invites/row.html'),
         initialize: function () {
-            this.listenTo(this.collection, 'sync', this.render);
+            this.listenTo(this.collection, 'sync update', this.render);
             this.collection.fetch();
         },
         render: function () {
             var totals = {
-                not_attending_children: 0,
-                not_attending_adults: 0,
                 attending_children: 0,
-                attending_adults: 0
+                attending_adults: 0,
+                total_children: 0,
+                total_adults: 0
             };
             var submitted = this.collection.filter({
                 is_submitted: true
@@ -158,7 +158,6 @@
             this.$('.progress-bar').css({
                 'width': (completed * 100) + '%'
             }).html(text);
-            this.$('table tbody').empty();
             var fragment = document.createDocumentFragment();
             this.collection.each(function (model) {
                 var data = model.get('guests').break_down();
@@ -166,15 +165,17 @@
                     invite: model
                 });
                 fragment.appendChild($(html).get(0));
-                totals.not_attending_children += data.not_attending_children;
-                totals.not_attending_adults += data.not_attending_adults;
-                totals.attending_children += data.attending_children;
-                totals.attending_adults += data.attending_adults;
+                if (model.get('is_submitted')) {
+                    totals.attending_children += data.attending_children;
+                    totals.attending_adults += data.attending_adults;
+                }
+                totals.total_children += (data.attending_children + data.not_attending_children);
+                totals.total_adults += (data.attending_adults + data.not_attending_adults);
             }, this);
             this.$('table tbody').html(fragment);
-            var adults = totals.not_attending_adults + ' of ' + (totals.attending_adults + totals.not_attending_adults);
+            var adults = totals.attending_adults + ' of ' + totals.total_adults;
             this.$('[data-stats="adults"]').text(adults);
-            var children = totals.not_attending_children + ' of ' + (totals.attending_children + totals.not_attending_children);
+            var children = totals.attending_children + ' of ' + totals.total_children;
             this.$('[data-stats="children"]').text(children);
         },
         remove: function (event) {

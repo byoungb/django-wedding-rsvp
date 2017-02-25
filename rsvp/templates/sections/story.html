@@ -18,7 +18,7 @@
                             <div class="carousel-inner" role="listbox">
                                 {% for story in stories %}
                                     {% with icon=story.icon %}
-                                        <div class="item {% if loop.first %}active{% endif %}">
+                                        <div class="item {% if loop.first %}active{% endif %}" data-story_id="{{ loop.index }}">
                                             <h4 class="item-title text-center">
                                                 <span class="{{ icon.font_family }} {{ icon.font_class }}"></span>
                                                 <span>{{ story.title }}</span>
