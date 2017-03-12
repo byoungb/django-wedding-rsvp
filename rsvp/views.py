@@ -19,7 +19,7 @@ class IndexView(TemplateResponseMixin, View):
     def get(self, request, *args, **kwargs):
         return self.render_to_response({
             'GOOGLE_MAPS_API_KEY': 'AIzaSyCYhdc-qA-ut3oH4YNfVFKHHgnvIo6eM0U',
-            'stamp': md5(str(1)).hexdigest(),
+            'stamp': md5(b'1').hexdigest(),
             'search_form': SearchForm(
                 auto_id=None,
             ),
@@ -53,7 +53,7 @@ class ApiView(JsonResponseMixin, View):
         except Invite.DoesNotExist:
             raise Http404()
         form = InviteForm(
-            data=loads(request.body),
+            data=loads(request.body.decode('utf-8')),
             instance=invite,
         )
         if not form.is_valid():

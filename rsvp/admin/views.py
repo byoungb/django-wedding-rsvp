@@ -34,7 +34,7 @@ class StoryView(TemplateResponseMixin, JsonResponseMixin, View):
             domain=request.get_host(),
         )
         form = StoryForm(
-            data=loads(request.body),
+            data=loads(request.body.decode('utf-8')),
             instance=Story(
                 site=site
             ),
@@ -49,7 +49,7 @@ class StoryView(TemplateResponseMixin, JsonResponseMixin, View):
             id=story_id,
         )
         form = StoryForm(
-            data=loads(request.body),
+            data=loads(request.body.decode('utf-8')),
             instance=instance,
         )
         if not form.is_valid():
@@ -70,7 +70,7 @@ class InviteView(TemplateResponseMixin, JsonResponseMixin, View):
 
     def post(self, request, *args, **kwargs):
         form = InviteForm(
-            data=loads(request.body),
+            data=loads(request.body.decode('utf-8')),
         )
         if not form.is_valid():
             raise Exception(form.errors)
@@ -82,7 +82,7 @@ class InviteView(TemplateResponseMixin, JsonResponseMixin, View):
             id=invite_id,
         )
         form = InviteForm(
-            data=loads(request.body),
+            data=loads(request.body.decode('utf-8')),
             instance=instance,
         )
         if not form.is_valid():

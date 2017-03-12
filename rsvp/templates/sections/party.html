@@ -1,0 +1,163 @@
+{% with stories=site.stories.all() %}
+    <section id="party" class="party-section section">
+        <div class="container">
+            <h3 class="title script text-center">
+                <span class="title-deco-left"></span>
+                <span class="title-text">The Wedding Party</span>
+                <span class="title-deco-right"></span>
+            </h3>
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ static('img/party/beth.jpg') }}" style="width: 100%;" />
+                        <div class="card-block">
+                            <h4 class="card-title">Maid of Honor: Beth</h4>
+                            <p class="card-text">
+                                Beth and Leah walked into a composition class at Hawkeye Community College, simply expecting to fulfill a requirement...
+                            </p>
+                            <div class="text-center">
+                                <span class="btn btn-primary" data-toggle="modal" data-target="#beth_details">Read More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ static('img/party/danielle.jpg') }}" style="width: 100%;" />
+                        <div class="card-block">
+                            <h4 class="card-title">Bridesmaid: Danielle</h4>
+                            <p class="card-text">
+                                Leah and Danielle have been friends since being kindergarten students. Good luck beating that duration of friendship...
+                            </p>
+                            <div class="text-center">
+                                <span class="btn btn-primary" data-toggle="modal" data-target="#danielle_details">Read More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ static('img/party/alyssa.jpg') }}" style="width: 100%;" />
+                        <div class="card-block">
+                            <h4 class="card-title">Bridesmaid: Alyssa</h4>
+                            <p class="card-text">
+                                They’re friends that met in high school through Alyssa’s siblings, who were in Leah’s grade. But they’re pretty much sisters...
+                            </p>
+                            <div class="text-center">
+                                <span class="btn btn-primary" data-toggle="modal" data-target="#alyssa_details">Read More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card">
+                        <img class="card-img-top" src="{{ static('img/party/hannah.jpg') }}" style="width: 100%;" />
+                        <div class="card-block">
+                            <h4 class="card-title">Bridesmaid: Hannah</h4>
+                            <p class="card-text">
+                                They've been friends since college and never lack things to talk about. Leah and Hannah are both dental hygienists...
+                            </p>
+                            <div class="text-center">
+                                <span class="btn btn-primary" data-toggle="modal" data-target="#hannah_details">Read More</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h3 class="text-center">
+                    Groomsmen coming soon...
+                </h3>
+                <br /><br /><br />
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="usher-container">
+                            <img class="card-img-top" src="{{ static('img/party/ushers.jpg') }}" />
+                            <img class="overlay" src="{{ static('img/party/ushers.png') }}" />
+                        </div>
+                        <div class="card-block">
+                            <h4 class="card-title">The Ushers: Leah's Brothers</h4>
+                            <p class="card-text">
+                                There is the tech-savy brother Ben, the argumentative brother Joe, the forgotten brother Pete, and the favorite brother Dan. (Hover over / Tap image to see names)
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="beth_details" tabindex="-1" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4>Maid of Honor: Beth</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="{{ static('img/party/beth.jpg') }}" style="max-width: 350px;" />
+                        </div>
+                        <p>
+                            Beth and Leah walked into a composition class at Hawkeye Community College, simply expecting to fulfill a requirement of knowing where to put commas in sentences. But they left with so much more: a lifelong friendship and proper knowledge of preposition usage (Leah's grammar is still in question). Beth and Leah quickly became not just good friends, but they were like a sister to each other. That was good for Leah, who never had a sister growing up. Unless you count Dan. Which, of course, she doesn’t. One story best displays Leah and Beth’s level of friendship. They became roommates and had a very nice apartment on campus. Such a nice place, the 80 degrees they had it set to was spent heating the upstairs apartments. So, they naturally would go park Beth’s car in the sun and just sit in there to keep warm. If you’re sitting with someone in a car, parked in the sun just to keep warm, pretty good chance you really like that person. When they weren’t sitting in a car together, Leah and Beth frequently ate at Carlos O’Kelly’s or ordering Red Apple Chinese (Beth's favorite). They’ve remained close over the past 12 years and most of their time together these days is spent chasing around Beth’s kids. Leah, or Aunt Leah as the kids call her, always enjoys that time spent together as a group.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="danielle_details" tabindex="-1" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4>Bridesmaid: Danielle</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="{{ static('img/party/danielle.jpg') }}" style="max-width: 350px;" />
+                        </div>
+                        <p>
+                            Leah and Danielle have been friends since being kindergarten students. Good luck beating that duration of friendship. Leah and Danielle met each other on the school bus. And judging by the location of Leah’s childhood home, it was a good thing she found someone to talk with on those rides to school. And apparently they lucked out with a bus driver that didn’t care too much about what they did during those rides. According to Leah, they would share cookie dough out of a tub, play music on a small keyboard that Danielle would bring, and smell lip smackers chapstick and try to guess the scent. Summary of that story: they probably had way more fun on their bus rides than most everyone else reading these words. They somewhat drifted apart during high school but reunited in college and Leah couldn’t be happier that they became best of friends once again. Leah is also happy Danielle and her family moved back to the area, probably hoping to once again rock out on that keyboard while eating cookie dough.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="alyssa_details" tabindex="-1" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4>Bridesmaid: Alyssa</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="{{ static('img/party/alyssa.jpg') }}" style="max-width: 350px;" />
+                        </div>
+                        <p>
+                            They’re friends that met in high school through Alyssa’s siblings, who were in Leah’s grade. But they’re pretty much sisters from different misters. Leah and Alyssa realize they have pretty similar personalities, and others have told them they even look alike. They spend their time together laughing at themselves and reminiscing about all the bad decisions they’ve made throughout the years. They won’t share how many bad decisions they’ve discussed, or even better, what those mistakes were. So, the rest of us are left to wonder and just make up our own ideas. Alyssa and Leah spent a lot of time in high school driving around in Alyssa’s purple truck that she named “Barney.” It’s unclear if they consider driving around in a purple truck one of their bad past decisions. And yet another one of those bad decisions could be that Alyssa and Leah gave code names to boys they liked in high school so they could talk about them without others knowing. When she wasn’t analyzing bad decisions or talking in code, Alyssa spent a lot of her time running away from Leah’s family dog, Sandy, on their farm.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="hannah_details" tabindex="-1" >
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+                        <h4>Bridesmaid: Hannah</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="text-center">
+                            <img class="img-thumbnail" src="{{ static('img/party/hannah.jpg') }}" style="max-width: 350px;" />
+                        </div>
+                        <p>
+                            They've been friends since college and never lack things to talk about. Leah and Hannah are both dental hygienists, so naturally the topic of teeth often come up in conversation. And they also like talking about their pets. Presumably, they don't spend much time talking about their pets' teeth (or do they?). However, Leah and Hannah insist they don't spend that much time talking about teeth. Hannah's husband, an innocent bystander, disagrees. But their friendship does go beyond the excitement of talking about teeth. Not that it would take much but they've enjoyed the excitement of skydiving and they've pushed themselves through half-marathons, trail runs and duathlons. For those not sure, duathlons typically involve running, biking, and then more running. They apparently don't like to swim. Hannah and Leah mainly complete these physical activities for one reason: to enjoy ice cream afterwards without guilt.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+{% endwith %}
