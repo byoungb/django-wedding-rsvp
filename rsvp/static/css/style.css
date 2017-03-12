@@ -728,6 +728,12 @@ label {
 .party-section {
     padding-top: 90px;
 }
+@media (max-width: 500px) {
+    .party-section span.title-deco-left,
+    .party-section span.title-deco-right {
+        display: none;
+    }
+}
 
 @media (min-width: 767px) and (max-width: 1200px) {
     .party-section .btn-primary {
