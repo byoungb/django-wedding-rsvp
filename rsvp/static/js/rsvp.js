@@ -1,13 +1,5 @@
 (function (globals, $) {
 
-    var button_mapping = {
-        ATTENDING_SINGLE: 'I will be there!',
-        ATTENDING_GROUP: 'We will be there!',
-        ATTENDING_SOME: 'Some of us will be there!',
-        NOT_ATTENDING_SINGLE: 'I am sorry I can\'t come.',
-        NOT_ATTENDING_GROUP: 'We are sorry we can\'t come.'
-    };
-
     var title_mapping = {
         ATTENDING_SINGLE: 'Looking forward to seeing you there!',
         ATTENDING_GROUP: 'Looking forward to seeing all of you there!',
@@ -27,12 +19,14 @@
 
     var GuestCollection = Backbone.Collection.extend({
         model: GuestModel,
-        list: function () {
-            return this.activeGuests().pluck('name').join(', ');
-        },
         activeGuests: function () {
             return new Backbone.Collection(this.filter(function (model) {
                 return model.is_active();
+            }));
+        },
+        attendingGuests: function () {
+            return new Backbone.Collection(this.filter(function (model) {
+                return model.is_active() && model.get('is_attending');
             }));
         },
         mode: function () {
@@ -49,9 +43,6 @@
                 return (active_guests.length == 1) ? 'NOT_ATTENDING_SINGLE' : 'NOT_ATTENDING_GROUP';
             }
             return 'ATTENDING_SOME';
-        },
-        buttonText: function () {
-            return button_mapping[this.mode()];
         },
         titleText: function () {
             return title_mapping[this.mode()];
@@ -114,10 +105,6 @@
                 '<% collection.each(function (model) { %>' +
                     '<button type="button" class="list-group-item" data-invite_id="<%= model.get(\'id\') %>">' +
                         '<strong><%= model.get("name") %></strong>' +
-                        '<% if (!model.get("guests").isEmpty()) { %>' +
-                            '<br />' +
-                            '<p><%= model.get("guests").list() %></p>' +
-                        '<% } %>' +
                     '</button>' +
                 '<% }); %>' +
             '</div>', {
@@ -165,13 +152,8 @@
         },
         load: function (model) {
             this.collection = model.get('guests');
-            this.listenTo(this.collection, 'change', this.change);
             this.model = model;
             this.render();
-        },
-        change: function () {
-            // var text = this.collection.buttonText();
-            // this.$('button[type="submit"]').text(text);
         },
         render: function () {
             this.$('div.guests').empty();
@@ -184,7 +166,6 @@
             });
             this.$('div.guests').html(fragment);
             this.$el.show();
-            this.change();
         },
         submit: function (event) {
             this.model.save();
@@ -195,6 +176,7 @@
 
     var ModalView = Backbone.View.extend({
         events: {
+            'submit form#complete_form': 'adjust',
             'hidden.bs.modal': 'hide',
             'shown.bs.modal': 'show'
         },
@@ -216,7 +198,21 @@
         },
         submitted: function (model) {
             var text = model.get('guests').titleText();
+            this.$('form#complete_form input[name="invite_id"]').val(model.get('id'));
             this.$('.subtitle').html(text);
+            this.$('form#complete_form').show();
+            var attending = model.get('guests').attendingGuests().length;
+            this.$('form#complete_form span.rsvp-attending').text(attending);
+            var total = model.get('guests').activeGuests().length;
+            this.$('form#complete_form span.rsvp-total').text(total);
+        },
+        adjust: function (event) {
+            var invite_id = this.$('form#complete_form input[name="invite_id"]').val();
+            var model = this.search_view.collection.get(invite_id);
+            var html = this.template(model);
+            this.$('.subtitle').html(html);
+            this.$('form#complete_form').hide();
+            this.rsvp_view.load(model);
         },
         selected: function (model) {
             var html = this.template(model);

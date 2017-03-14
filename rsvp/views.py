@@ -65,32 +65,3 @@ class ApiView(JsonResponseMixin, View):
         return self.json_to_response(
             context=instance,
         )
-
-
-# class SearchView(JsonResponseMixin, View):
-#     encoder = InviteEncoder
-#
-#     def put(self, request, *args, **kwargs):
-#         form = SearchForm(
-#             data=QueryDict(request.body),
-#         )
-#         if not form.is_valid():
-#             return self.json_to_response(
-#                 context=form.errors,
-#                 status=400,
-#             )
-#         return self.json_to_response(
-#             context=form.suggestions(),
-#         )
-#
-#     def post(self, request, *args, **kwargs):
-#         form = SearchForm(
-#             data=request.POST,
-#         )
-#         if not form.is_valid():
-#             return self.json_to_response(
-#                 context=form.errors,
-#                 status=400,
-#             )
-#         login(request, form.cleaned_data.get('invite'))
-#         return self.json_to_response()

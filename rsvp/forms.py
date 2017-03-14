@@ -1,4 +1,3 @@
-from django.db.models import Q
 from django import forms
 
 from rsvp.models import Invite, Guest
@@ -16,8 +15,7 @@ class SearchForm(forms.Form):
 
     def suggestions(self):
         return Invite.objects.filter(
-            Q(guests__name__icontains=self.cleaned_data['name']) |
-            Q(name__icontains=self.cleaned_data['name'])
+            name__icontains=self.cleaned_data['name'],
         ).prefetch_related(
             'guests',
         )
