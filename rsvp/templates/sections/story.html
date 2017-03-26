@@ -1,24 +1,23 @@
 {% with stories=site.stories.all() %}
     <section id="story" class="story-section section">
-        <div class="container text-center">
+        <div class="container">
             <div class="row">
-                <div class="story-box col-md-push-5 col-sm-push-0 col-xs-push-0 col-xs-12 col-md-7">
-                    <h3 class="title script title-reversed">
-                        <span class="title-deco-left"></span>
-                        <span class="title-text">Our Story</span>
-                        <span class="title-deco-right"></span>
-                    </h3>
-                    <div class="content-container text-left">
-                        <div id="story-carousel" class="story-carousel carousel slide" data-ride="carousel" data-interval="false">
-                            <ol class="carousel-indicators">
-                                {% for story in stories %}
-                                    <li data-target="#story-carousel" data-slide-to="{{ loop.index0 }}" {% if loop.first %}class="active"{% endif %}>&nbsp;</li>
-                                {% endfor %}
-                            </ol>
-                            <div class="carousel-inner" role="listbox">
-                                {% for story in stories %}
+                <h3 class="title script text-center">
+                    <span class="title-deco-left"></span>
+                    <span class="title-text">Our Story</span>
+                    <span class="title-deco-right"></span>
+                </h3>
+            </div>
+        </div>
+        <div class="container-fluid">
+            {% for story in stories %}
+                <div class="row bg{{ loop.index }}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="story-box col-md-push-5 col-sm-push-0 col-xs-push-0 col-xs-12 col-md-7">
+                                <div class="content-container text-left">
                                     {% with icon=story.icon %}
-                                        <div class="item {% if loop.first %}active{% endif %}" data-story_id="{{ loop.index }}">
+                                        <div class="item">
                                             <h4 class="item-title text-center">
                                                 <span class="{{ icon.font_family }} {{ icon.font_class }}"></span>
                                                 <span>{{ story.title }}</span>
@@ -26,12 +25,12 @@
                                             {{ story.body|linebreaks }}
                                         </div>
                                     {% endwith %}
-                                {% endfor %}
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            {% endfor %}
         </div>
     </section>
 {% endwith %}

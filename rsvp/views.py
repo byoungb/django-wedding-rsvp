@@ -19,7 +19,7 @@ class IndexView(TemplateResponseMixin, View):
     def get(self, request, *args, **kwargs):
         return self.render_to_response({
             'GOOGLE_MAPS_API_KEY': 'AIzaSyCYhdc-qA-ut3oH4YNfVFKHHgnvIo6eM0U',
-            'stamp': md5(b'3').hexdigest(),
+            'stamp': md5(b'4').hexdigest(),
             'search_form': SearchForm(
                 auto_id=None,
             ),
